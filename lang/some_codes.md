@@ -7,4 +7,3 @@
 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
 ```
-
