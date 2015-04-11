@@ -7,6 +7,9 @@ Set mysql password
 mysqladmin -u root password 'lovesql456'
 ```
 
+http://192.168.1.105/~haozai309/
+http://192.168.1.105/~haozai309/phpmyadmin/
+
 
 # [Mac OS X 10.10 启用 Web 服务器](http://note.rpsh.net/posts/2013/11/27/osx-10-9-apache-server-php-mysql/)
 原文： [Get Apache, MySQL, PHP and phpMyAdmin working on OSX 10.9 Mavericks](http://coolestguidesontheplanet.com/get-apache-mysql-php-phpmyadmin-working-osx-10-9-mavericks/)
@@ -33,7 +36,7 @@ Apache Works
 ### 文件根目录
 系统级的根目录
 ```
-http://localhosts/
+http://localhost/
 ```
 
 对应的文件目录是：
@@ -131,7 +134,7 @@ LoadModule php5_module libexec/apache2/libphp5.so
 sudo apachectl restart
 ```
 
-查看 `Apache` 信息
+查看 `Apache` 信息（保存为phpinfo.php）
 ```
 <?php phpinfo(); ?>
 ```
