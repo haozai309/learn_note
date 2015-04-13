@@ -1,0 +1,86 @@
+# First line code
+
+
+## 9. Service
+
+Service服务是Android中实现程序后台运行的解决方案，它非常适合去执行不需要和用户交互而且还要求长期运行的任务。
+
+### 线程的基本使用方法
+1. 创建一个集成Thread的类
+```java
+class MyThread extends Thread {
+	@Override
+	public void run() {
+		// logic codes
+	}
+}
+```
+启动线程 `new MyThread().start()`
+
+
+2. 实现Runnable接口
+```java
+class MyRunnable implements Runnable {
+	@Override
+	public void run() {
+		// logic codes
+	}
+}
+```
+
+启动线程
+```java
+MyRunnable myRunnable = new MyRunnable();
+new Thread(myRunnable).start();
+```
+
+### Handler 异步处理
+
+异步处理消息由四个部分组成：Message，Handler，MessageQueue和Looper。
+* Message：线程之间传递的消息，字段有what, arg1, arg2和obj
+* Handler：发送和处理消息，sendMessage()和handleMessage()
+* MessageQueue：消息队列，存放所有通过Handler发送的消息，每个线程一个
+* Looper：线程中MessageQueue的管家，调用Looper的loop()方法，进入无限循环中。发现MessageQueue只能怪存在消息，则取出并传递到Handler的handleMessage()中
+
+消息处理流程
+1. 主线程中创建一个Handler对象，并重写handleMessage()方法
+2. 子线程需要更新UI，创建一个Message对象，并通过Handler发出
+3. 消息进入MessageQueue中，Looper取出后并分发到Handler的handleMessage()方法中
+
+
+### AsyncTask
+Android提供的类，基于异步消息处理机制实现。
+
+参数
+* params：参数，可以在后台任务使用
+* progress：后台执行任务，显示进度到界面
+* Result：任务完毕后，对结果进行返回
+
+方法
+* onPreExecute：任务执行前的初始化操作
+* doInBackground(Params...)：子线程运行，处理所有的耗时操作。反馈进度要通过publishProgress执行
+* onProgressUpdate(Progress...)：可以对UI进行操作，调用publicProgress后执行
+* onPostExecute(Result)：后台任务完成同return后执行，可以进行UI操作
+
+
+### Service
+Android四大组件之一，每一个服务都需要在AndroidManifest.xml中注册。
+
+重要方法
+* onCreate：服务创建时调用
+* onStartCommand：每次服务启动的时候调用 (startService)
+* onBind：活动bind到service时执行
+* onUnBind：活动unbind到service时执行
+* onDestroy：服务销毁时调用，需要回收不需要使用的资源
+
+
+bind Service的过程
+* 创建一个ServiceConnection的匿名类，重写方法。在onServiceConnected中向下转型得到Binder的实例（使用此binder的public方法访问service）
+* 创建intent，通过bindService bind到Service上
+
+
+
+
+
+
+
