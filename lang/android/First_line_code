@@ -1,6 +1,10 @@
 # First line code
 
 
+
+
+## 8. Multimedia
+
 ## 9. Service
 
 Service服务是Android中实现程序后台运行的解决方案，它非常适合去执行不需要和用户交互而且还要求长期运行的任务。
@@ -78,7 +82,17 @@ bind Service的过程
 * 创建一个ServiceConnection的匿名类，重写方法。在onServiceConnected中向下转型得到Binder的实例（使用此binder的public方法访问service）
 * 创建intent，通过bindService bind到Service上
 
+服务中得代码都是默认运行在主线程当中的，如果处理一些耗时的逻辑，很容易出现ANR（Application Not Responding）
 
+
+IntentService: 异步的，会自动停止的服务
+
+
+### 后台执行定时任务
+使用Java提供的Timer，或者Android的Alarm机制。前者不太适用于需要长期在后台运行的定时任务。Alarm机制具有唤醒CPU的功能，可以保证每次需要执行的定时任务时CPU能正常工作。
+
+
+> 从Android 4.4开始，Alarm任务的触发时间变得不准确，有可能会延迟一段时间才执行。这是系统在耗电性能的优化。系统会自动检测有多少alarm任务存在，然后将触发时间将近的几个任务放在一起执行，这就可以大幅度减少CPU被唤醒的次数，从而延长电池的使用时间。
 
 
 
