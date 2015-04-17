@@ -127,6 +127,10 @@ $ git log --pretty=format:"%h - %an, %ar : %s"
 $ git log --pretty=format:"%h %s" --graph
 ```
 
+```
+git log --graph --decorate --abbrev-commit --all --pretty=oneline
+```
+
 使用图形化工具查阅提交历史: `gitk`
 
 修改上一次提交

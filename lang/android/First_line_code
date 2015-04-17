@@ -3,7 +3,37 @@
 
 
 
+
+## 6. 数据持久化
+数据持久化是指将那些内存中的瞬时数据保存到存储设备中，保证即时手机或电脑在关机的情况下，这些数据仍不会丢失。三种方式：文件存储、SharedPreference存储以及数据库存储。
+
+Context提供了openFileInput和openFileOutput方法，用于写入和读取/data/data/<package name>/files目录下的文件。
+
+SharedPreferences 是使用键值对的方式来存储数据的。存储
+1. 使用SharedPreferences对象的edit()方法获取一个SharedPreferences.Editor()对象
+2. 使用SharedPreferences.Editor()的put***添加数据
+3. 调用commit()方法将添加的数据提交
+
+读取：获取一个SharedPreferences对象，调用get***方法获取对应的值
+
+
+SQLite是一款轻量级的数据库，它的运算速度非常快，占用资源少，通常只需要几百K的内存就够了，因而特别适合在移动设备上使用。SQLite不仅支持标准的SQL语法，还遵循了数据库的ACID食物。
+
+对数据库的操作有四种：创建create，查询retrieve，更新update，删除delete。
+
+SQL: Structured Query Language，即结构化查询语言。
+
 ## 8. Multimedia
+
+### 通知
+通知Notification是Android系统中比较有特色的一个功能，当某个应用程序希望向用户发出一些提示信息，而该应用程序又不在前台运行时，就可以借助通知来实现。
+
+Intent vs. PendingIntent:
+* 前者立即去执行某个动作，后者在某个合适的时机执行
+
+
+
+
 
 ## 9. Service
 
