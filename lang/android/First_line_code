@@ -159,8 +159,13 @@ IntentService: 异步的，会自动停止的服务
 
 ### 11. Location Based Service
 
+获取当前地理位置：
+* 获取LocationManager的实例，`getSystemService(Context.LOCATION_SERVICE)`
+* 选择一个位置提供器（GPS，Network和Passive）
+* 通过LocationManager.getLastKnownLocation(provider)获取位置
 
-https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,073.961452&sensor=true_or_false
+
+https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=true_or_false
 
 
 
